@@ -24,12 +24,15 @@ st.markdown(
         /* Main content styling */
         .main {
             padding: 2rem;
+            background-color: #FFFFFF !important; /* Light mode background */
+            color: #000000 !important; /* Light mode text color */
         }
         
         /* Override ALL Streamlit elements */
         .stMarkdown, .stText, p, span, label, .stTextInput > label, 
         .stSelectbox > label, .stFileUploader > label {
             font-family: 'Plus Jakarta Sans', sans-serif !important;
+            color: #000000 !important; /* Light mode text color */
         }
         
         /* Header styling */
@@ -122,7 +125,7 @@ st.title("Document Management Portal")
 st.markdown(
     """
     <div style='margin-bottom: 2rem;'>
-        <p style='font-size: 1.1rem; color: #666; margin-bottom: 2rem; font-family: "Plus Jakarta Sans", sans-serif;'>
+        <p style='font-size: 1.1rem; color: #000; margin-bottom: 2rem; font-family: "Plus Jakarta Sans", sans-serif;'>
             Securely upload and manage your documents with enterprise-grade security and compliance.
         </p>
     </div>
@@ -138,7 +141,7 @@ s3_client = boto3.client("s3")
 st.markdown("### Document Upload")
 st.markdown(
     """
-    <p style='color: #666; margin-bottom: 1rem; font-family: "Plus Jakarta Sans", sans-serif;'>
+    <p style='color: #000; margin-bottom: 1rem; font-family: "Plus Jakarta Sans", sans-serif;'>
         Upload PDF documents for secure storage and processing. All files are encrypted at rest.
     </p>
 """,
@@ -188,7 +191,7 @@ if uploaded_files:
 st.markdown("---")
 st.markdown(
     """
-    <div style='text-align: center; color: #666; padding: 2rem; font-family: "Plus Jakarta Sans", sans-serif;'>
+    <div style='text-align: center; color: #000; padding: 2rem; font-family: "Plus Jakarta Sans", sans-serif;'>
         <p>Interlife © 2024 | Enterprise Document Management Solution</p>
         <p style='font-size: 0.8rem;'>SOC 2 Type II Certified | HIPAA Compliant | GDPR Ready</p>
     </div>
