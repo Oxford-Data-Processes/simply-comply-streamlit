@@ -42,7 +42,7 @@ st.markdown(
 st.markdown(
     """
     <footer style='text-align: center; padding: 20px;'>
-        <p style='margin: 0;'>GDPR compliant</p>
+        <p style='margin: 0;'>GDPR Compliant</p>
         <p style='margin: 0;'>© 2024 INTERLIFE. All rights reserved.</p>
     </footer>
     """,
