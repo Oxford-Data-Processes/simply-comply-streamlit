@@ -16,20 +16,6 @@ uploaded_files = st.file_uploader(
 )
 
 
-# Move footer to the bottom of the page
-st.markdown(
-    "<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True
-)  # Add space before the footer
-st.markdown(
-    """
-    <footer style='text-align: center; padding: 20px;'>
-        <p style='margin: 0;'>GDPR compliant</p>
-        <p style='margin: 0;'>© 2024 INTERLIFE. All rights reserved.</p>
-    </footer>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Upload button
 if uploaded_files:
     if st.button("Upload Files"):
@@ -47,3 +33,18 @@ if uploaded_files:
             except Exception as e:
                 st.error(f"An error occurred while uploading the file: {e}")
         st.success("All files uploaded successfully!")
+
+
+# Move footer to the bottom of the page
+st.markdown(
+    "<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True
+)  # Add space before the footer
+st.markdown(
+    """
+    <footer style='text-align: center; padding: 20px;'>
+        <p style='margin: 0;'>GDPR compliant</p>
+        <p style='margin: 0;'>© 2024 INTERLIFE. All rights reserved.</p>
+    </footer>
+    """,
+    unsafe_allow_html=True,
+)
