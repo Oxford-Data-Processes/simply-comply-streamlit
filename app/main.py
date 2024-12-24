@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import boto3
 from botocore.exceptions import NoCredentialsError
@@ -18,6 +19,9 @@ if uploaded_files:
         for uploaded_file in uploaded_files:
             try:
                 iam.get_aws_credentials(st.secrets["aws_credentials"])
+                st.write(len(os.environ["AWS_ACCESS_KEY_ID"]))
+                st.write(len(os.environ["AWS_SECRET_ACCESS_KEY"]))
+                st.write(len(os.environ["AWS_SESSION_TOKEN"]))
                 s3_client = boto3.client("s3")
                 # Upload the file to S3
                 s3_client.upload_fileobj(
