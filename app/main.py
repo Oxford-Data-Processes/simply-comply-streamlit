@@ -3,18 +3,29 @@ import boto3
 from botocore.exceptions import NoCredentialsError
 from aws_utils import iam
 
-iam.get_aws_credentials(st.secrets["aws_credentials"])
-# Initialize S3 client
-s3_client = boto3.client("s3")
-
 # Streamlit app title
 st.title("Interlife File Uploader")
+
+# AWS Credentials Connection Button
+if st.button("Connect AWS Credentials"):
+    try:
+        iam.get_aws_credentials(st.secrets["aws_credentials"])
+        s3_client = boto3.client("s3")
+        st.success("AWS credentials connected successfully!")
+    except Exception as e:
+        st.error(f"Failed to connect AWS credentials: {e}")
+else:
+    # Initialize S3 client if credentials already exist
+    try:
+        iam.get_aws_credentials(st.secrets["aws_credentials"])
+        s3_client = boto3.client("s3")
+    except Exception:
+        st.warning("Please connect AWS credentials first")
 
 # File uploader widget allowing multiple file uploads, only PDFs
 uploaded_files = st.file_uploader(
     "Choose PDF files", type=["pdf"], accept_multiple_files=True
 )
-
 
 # Upload button
 if uploaded_files:
