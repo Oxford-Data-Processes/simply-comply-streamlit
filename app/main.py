@@ -19,9 +19,6 @@ if uploaded_files:
         for uploaded_file in uploaded_files:
             try:
                 iam.get_aws_credentials(st.secrets["aws_credentials"])
-                st.write(len(os.environ["AWS_ACCESS_KEY_ID"]))
-                st.write(len(os.environ["AWS_SECRET_ACCESS_KEY"]))
-                st.write(len(os.environ["AWS_SESSION_TOKEN"]))
                 s3_client = boto3.client(
                     "s3",
                     aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
