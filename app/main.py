@@ -22,7 +22,12 @@ if uploaded_files:
                 st.write(len(os.environ["AWS_ACCESS_KEY_ID"]))
                 st.write(len(os.environ["AWS_SECRET_ACCESS_KEY"]))
                 st.write(len(os.environ["AWS_SESSION_TOKEN"]))
-                s3_client = boto3.client("s3")
+                s3_client = boto3.client(
+                    "s3",
+                    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+                    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+                    aws_session_token=os.environ["AWS_SESSION_TOKEN"],
+                )
                 # Upload the file to S3
                 s3_client.upload_fileobj(
                     uploaded_file,
