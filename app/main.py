@@ -6,21 +6,6 @@ from aws_utils import iam
 # Streamlit app title
 st.title("Interlife File Uploader")
 
-# AWS Credentials Connection Button
-if st.button("Connect AWS Credentials"):
-    try:
-        iam.get_aws_credentials(st.secrets["aws_credentials"])
-        s3_client = boto3.client("s3")
-        st.success("AWS credentials connected successfully!")
-    except Exception as e:
-        st.error(f"Failed to connect AWS credentials: {e}")
-else:
-    # Initialize S3 client if credentials already exist
-    try:
-        iam.get_aws_credentials(st.secrets["aws_credentials"])
-        s3_client = boto3.client("s3")
-    except Exception:
-        st.warning("Please connect AWS credentials first")
 
 # File uploader widget allowing multiple file uploads, only PDFs
 uploaded_files = st.file_uploader(
@@ -32,6 +17,8 @@ if uploaded_files:
     if st.button("Upload Files"):
         for uploaded_file in uploaded_files:
             try:
+                iam.get_aws_credentials(st.secrets["aws_credentials"])
+                s3_client = boto3.client("s3")
                 # Upload the file to S3
                 s3_client.upload_fileobj(
                     uploaded_file,
